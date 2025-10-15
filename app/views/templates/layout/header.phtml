@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <base href="<?php echo BASE_URL ?>">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Fuente y CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="public/css/styles.css">
+
+    <title>Home</title>
+</head>
+<body>
+
+    <!-- HEADER / NAVBAR -->
+    <nav>
+  <div class="logo">
+    <a href="index">
+      <img src="public/img/logoTodoPisos.jpg" alt="Logo TODO PISOS">
+    </a>
+  </div>
+
+  <div>
+    <ul class="menu">
+      <li><a href="index">Home</a></li>
+      <li><a href="lista_pisos">Products</a></li>
+      <li><a href="#">About We</a></li>
+      <li><a href="login">Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+        <?php if($this->user): ?>
+            <span class="user-email"><?= $this->user->email ?></span>
+            <a href="logout" class="logout-link">Salir</a>
+        <?php endif; ?>
+    </div>
+</nav>
