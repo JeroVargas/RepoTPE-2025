@@ -3,48 +3,50 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-09-2025 a las 18:13:45
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+--
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Base de datos: `pisostpe`
 --
 
+-- Primero, eliminamos las tablas antiguas si existen para empezar de cero.
+DROP TABLE IF EXISTS `pisos`;
+DROP TABLE IF EXISTS `categorias`;
+
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `baldosas`
+-- Estructura de tabla para la tabla `categorias`
 --
-
-CREATE TABLE `baldosas` (
+CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
-  `id_origen` int(11) NOT NULL,
-  `lugar_colocacion` varchar(15) NOT NULL,
-  `tamanio` varchar(15) NOT NULL
+  `nombre` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `categorias`
+--
+INSERT INTO `categorias` (`id`, `nombre`) VALUES
+(1, 'Mármoles'),
+(2, 'Travertinos'),
+(3, 'Baldosas');
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `pisos`
 --
-
 CREATE TABLE `pisos` (
-  `id` int(255) NOT NULL,
-  `baldosa` varchar(255) NOT NULL,
-  `marmol` varchar(255) NOT NULL,
-  `travertino` varchar(255) NOT NULL
+  `id` int(11) NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `tipo_variante` varchar(255) NOT NULL,
+  `origen` varchar(100) NOT NULL,
+  `acabados_comunes` varchar(255) NOT NULL,
+  `uso_recomendado` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -52,45 +54,41 @@ CREATE TABLE `pisos` (
 --
 
 --
--- Indices de la tabla `baldosas`
+-- Indices de la tabla `categorias`
 --
-ALTER TABLE `baldosas`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_origen` (`id_origen`);
+ALTER TABLE `categorias`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `pisos`
 --
 ALTER TABLE `pisos`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_categoria` (`id_categoria`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT de la tabla `baldosas`
+-- AUTO_INCREMENT de la tabla `categorias`
 --
-ALTER TABLE `baldosas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `categorias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `pisos`
 --
 ALTER TABLE `pisos`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Restricciones para tablas volcadas
 --
 
 --
--- Filtros para la tabla `baldosas`
+-- Filtros para la tabla `pisos`
 --
-ALTER TABLE `baldosas`
-  ADD CONSTRAINT `baldosas_ibfk_1` FOREIGN KEY (`id_origen`) REFERENCES `pisos` (`id`);
+ALTER TABLE `pisos`
+  ADD CONSTRAINT `pisos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`);
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
