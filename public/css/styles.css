@@ -1,305 +1,386 @@
 /* 🌿 Reset y base */
 * {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 body {
- font-family: 'Poppins', sans-serif;
- color: #2a2a2a;
- background-color: #f9f6f1; /* tono arena claro */
- scroll-behavior: smooth;
- line-height: 1.7;
- font-size: 1.05rem;
-  
-  /* ✅ CORRECCIÓN: Fondo de página aplicado al body */
- background-image: url('app/public/img/fondoPagina.jpg'); 
-  background-repeat: repeat; 
-  background-attachment: fixed;
-  background-size: auto; 
+    font-family: "Poppins", sans-serif;
+    color: #2a2a2a;
+    background-color: #f9f6f1;
+    scroll-behavior: smooth;
+    line-height: 1.7;
+    font-size: 1.05rem;
+    background-image: url("../img/fondoPagina.jpg");
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-size: auto;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* 🧭 Navbar elegante */
 nav {
- position: fixed;
- top: 0;
- left: 0;
- right: 0;
- height: 75px;
- background: rgba(255, 255, 255, 0.12);
- backdrop-filter: blur(10px); /* Esto puede marcar error, pero es válido */
- border-bottom: 1px solid rgba(255, 255, 255, 0.25);
- display: flex;
- align-items: center;
- justify-content: space-between;
- padding: 0 50px;
- z-index: 100;
- box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 75px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    z-index: 100;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, 0.08);
 }
-
-
 nav:not(.on-hero) {
- background: #1e1e1e; 
- backdrop-filter: none;
- border-bottom: 1px solid #333;
+    background: #1e1e1e;
+    backdrop-filter: none;
+    border-bottom: 1px solid #333;
 }
 nav:not(.on-hero) .menu a {
- color: #ffffff; 
+    color: #ffffff;
 }
-
-
 nav .logo img {
- height: 50px;
- border-radius: 10px;
+    height: 50px;
+    border-radius: 10px;
 }
-
 nav .menu {
- display: flex;
- gap: 35px;
+    display: flex;
+    gap: 35px;
 }
-
 nav .menu a {
- color: #ffffff;
- text-decoration: none;
- font-weight: 600;
- font-size: 1.05rem;
- transition: all 0.3s ease;
- position: relative;
- letter-spacing: 0.3px;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.05rem;
+    transition: all 0.3s ease;
+    position: relative;
+    letter-spacing: 0.3px;
 }
-
 nav .menu a::after {
- content: "";
- position: absolute;
- bottom: -5px;
- left: 0;
- width: 0%;
- height: 2px;
- background: #d4a373; /* dorado arena */
- transition: width 0.3s ease;
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0%;
+    height: 2px;
+    background: #d4a373;
+    transition: width 0.3s ease;
 }
-
 nav .menu a:hover::after {
- width: 100%;
+    width: 100%;
 }
-
 nav .menu a:hover {
- color: #d4a373;
+    color: #d4a373;
 }
 
 /* 🏠 Hero principal */
 .hero {
- height: 100vh;
-  /* ✅ CORRECCIÓN: Usando la sintaxis 'background' abreviada para Hero */
-  background: url('app/public/img/fondoPagina.jpg') center/cover no-repeat;
- display: flex;
- flex-direction: column;
- justify-content: center;
- align-items: center;
- text-align: center;
- padding: 0 20px;
- color: #fff;
- position: relative;
+    height: 100vh;
+    background: url("../img/fondoPagina.jpg") center/cover no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    color: #fff;
+    position: relative;
 }
-
-/* --- MODIFICACIÓN: Hero de Productos (Más corto) --- */
 .hero.products-hero {
- height: 60vh; 
- background: url('app/public/img/fondoPagina.jpg') center/cover no-repeat;
- padding-top: 75px; 
+    height: 60vh;
+    background: url("../img/fondoPagina.jpg") center/cover no-repeat;
+    padding-top: 75px;
 }
-
-
 .hero::before {
- content: "";
- position: absolute;
- inset: 0;
- background: rgba(0, 0, 0, 0.45);
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
 }
-
 .hero-content {
- position: relative;
- background: rgba(255, 255, 255, 0.18);
- backdrop-filter: blur(10px);
- border-radius: 16px;
- padding: 60px 45px;
- box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
- max-width: 720px;
+    position: relative;
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 60px 45px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+    max-width: 720px;
 }
-
 .hero h1 {
- font-size: 3.5rem;
- margin-bottom: 20px;
- letter-spacing: 1px;
- text-transform: uppercase;
- font-weight: 700;
- color: #fefefe;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fefefe;
 }
-
 .hero p {
- font-size: 1.25rem;
- margin-bottom: 40px;
- color: #f4f4f4;
+    font-size: 1.25rem;
+    margin-bottom: 40px;
+    color: #f4f4f4;
 }
-
-/* ✨ Botón elegante */
 .hero .btn {
- padding: 14px 42px;
- background: linear-gradient(135deg, #d4a373, #b07f48);
- color: white;
- font-weight: 600;
- font-size: 1.1rem;
- border: none;
- border-radius: 50px;
- text-decoration: none;
- transition: all 0.3s ease;
- box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    padding: 14px 42px;
+    background: linear-gradient(135deg, #d4a373, #b07f48);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
-
 .hero .btn:hover {
- transform: translateY(-4px);
- box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
- background: linear-gradient(135deg, #b07f48, #d4a373);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #b07f48, #d4a373);
 }
 
-/* 📜 Contenido (si agregás más secciones) */
+/* 📜 Contenido */
 section, p {
- color: #2c2c2c;
+    color: #2c2c2c;
 }
 
-/* --- Estilos de la Tabla de Productos (YA ESTÁN CORRECTOS) --- */
+/* --- Estilos de la Tabla de Productos --- */
 .product-section {
- padding: 80px 50px;
- text-align: center;
- background-color: #ffffff;
+    padding: 80px 50px;
+    text-align: center;
+    background-color: #ffffff;
 }
-
 .product-section h2 {
- font-size: 2.5rem;
- color: #4a4a4a;
- margin-bottom: 10px;
+    font-size: 2.5rem;
+    color: #4a4a4a;
+    margin-bottom: 10px;
 }
-
 .section-description {
- font-size: 1.15rem;
- color: #777;
- margin-bottom: 40px;
+    font-size: 1.15rem;
+    color: #777;
+    margin-bottom: 40px;
 }
-
-/* 📊 Estilos de la Tabla de Productos */
 .table-container {
- overflow-x: auto;
- margin-top: 30px;
- box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
- border-radius: 12px;
- border: 1px solid #eee;
+    overflow-x: auto;
+    margin-top: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-radius: 12px;
+    border: 1px solid #eee;
 }
-
 .products-table {
- width: 100%;
- border-collapse: collapse;
- min-width: 800px; 
- text-align: left;
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+    text-align: left;
 }
-
 .products-table th, .products-table td {
- padding: 15px 20px;
- border-bottom: 1px solid #f1f1f1;
- font-size: 0.95rem;
+    padding: 15px 20px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 0.95rem;
 }
-
 .products-table th {
- background-color: #f7f7f7;
- color: #333;
- font-weight: 700;
- text-transform: uppercase;
- letter-spacing: 0.5px;
- border-top: 2px solid #d4a373;
+    background-color: #f7f7f7;
+    color: #333;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-top: 2px solid #d4a373;
 }
-
 .products-table tbody tr:hover {
-  background-color: #fff9f0;
+    background-color: #fff9f0;
 }
-
 .products-table tbody tr:last-child td {
-  border-bottom: none;
+    border-bottom: none;
 }
-
 .products-table .material-group {
- font-weight: 700;
-  background-color: #fcf4e8; 
- border-left: 3px solid #d4a373; 
+    font-weight: 700;
+    background-color: #fcf4e8;
+    border-left: 3px solid #d4a373;
 }
-
 .products-table td strong {
-  color: #d4a373;
+    color: #d4a373;
 }
-
 
 /* 🪞 Footer */
 footer {
- background: #1e1e1e;
- color: #e5e5e5;
-  text-align: center;
- padding: 35px 15px;
- font-size: 0.95rem;
- letter-spacing: 0.5px;
+    background: #1e1e1e;
+    color: #e5e5e5;
+    text-align: center;
+    padding: 35px 15px;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
 }
-
 footer span {
- color: #d4a373;
- font-weight: 600;
+    color: #d4a373;
+    font-weight: 600;
 }
 
 /* 🔐 Usuario logueado */
 .user-email {
- margin-left: 15px;
- font-size: 0.95rem;
-  color: #f1f1f1;
- background: rgba(255, 255, 255, 0.15);
- padding: 6px 12px;
- border-radius: 8px;
+    margin-left: 15px;
+    font-size: 0.95rem;
+    color: #f1f1f1;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 6px 12px;
+    border-radius: 8px;
 }
-
 .logout-link {
- margin-left: 10px;
- color: #fff;
- text-decoration: none;
- font-weight: 600;
- background: linear-gradient(135deg, #b07f48, #d4a373);
- padding: 8px 15px;
- border-radius: 6px;
- transition: 0.3s;
+    margin-left: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    background: linear-gradient(135deg, #b07f48, #d4a373);
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: 0.3s;
+}
+.logout-link:hover {
+    background: linear-gradient(135deg, #d4a373, #b07f48);
+    transform: translateY(-2px);
 }
 
-.logout-link:hover {
- background: linear-gradient(135deg, #d4a373, #b07f48);
- transform: translateY(-2px);
+/* 🌟 Formulario Login Elegante */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    padding: 20px;
 }
+.login-form {
+    background: rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+    padding: 50px 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    max-width: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.login-form h2 {
+    text-align: center;
+    color: #fefefe;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+.login-form label {
+    color: #f4f4f4;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+.login-form input {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    transition: all 0.3s ease;
+}
+.login-form input::placeholder {
+    color: #f0e6d2;
+}
+.login-form input:focus {
+    background: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 8px rgba(212,163,115,0.7);
+}
+.login-form button {
+    padding: 14px 0;
+    background: linear-gradient(135deg, #d4a373, #b07f48);
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+.login-form button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+    background: linear-gradient(135deg, #b07f48, #d4a373);
+}
+
+/* --- Botones de acciones en la tabla --- */
+.acciones {
+    text-align: center;
+}
+
+.btn-editar, .btn-eliminar, .btn-agregar {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Colores específicos */
+.btn-editar {
+    background-color: #3498db;
+}
+
+.btn-editar:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+.btn-eliminar {
+    background-color: #e74c3c;
+}
+
+.btn-eliminar:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+}
+
+.btn-agregar {
+    background-color: #27ae60;
+}
+
+.btn-agregar:hover {
+    background-color: #1e8449;
+    transform: scale(1.05);
+}
+
 
 /* 📱 Responsive */
 @media (max-width: 768px) {
- nav {
- flex-direction: column;
-  height: auto;
- padding: 15px 25px;
-  gap: 10px;
- }
-
- nav .menu {
- flex-wrap: wrap;
-justify-content: center;
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 15px 25px;
+        gap: 10px;
+    }
+    nav .menu {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .hero h1 {
+        font-size: 2.6rem;
+    }
+    .hero p {
+        font-size: 1.1rem;
+    }
+    .hero-content {
+        padding: 40px 25px;
+    }
 }
-
-.hero h1 {
- font-size: 2.6rem;
-}
-.hero p {
-font-size: 1.1rem;
- }
-
- .hero-content {
-  padding: 40px 25px;
- }
+@media (max-width: 480px) {
+    .login-form {
+        padding: 30px 20px;
+    }
+    .login-form h2 {
+        font-size: 1.6rem;
+    }
 }

@@ -1,26 +1,24 @@
 <?php require 'app/views/templates/layout/header.phtml' ?>
 
 <?php if ($error): ?>
-<div class='alert alert-danger' role='alert'>
-    <?= $error ?>
-</div>
+    <div class='alert alert-danger' role='alert'>
+        <?= $error ?>
+    </div>
 <?php endif ?>
 
+<div class="login-container">
+    <form method="POST" action="verificar-login" class="login-form">
+        <h2>Iniciar Sesión</h2>
 
-<div>
-    <h2> Login </h2>
-    <form method="POST">
-        <label for="email">hola</label>
-        <input type="text" name="email" placeholder="hola" required>
-        <input type="password" class="form-control" name="password" required>
-        <button class="btn btn-primary">Login</button>
+        <label for="email">Correo electrónico</label>
+        <input type="email" name="email" id="email" placeholder="ejemplo@correo.com">
+
+        <label for="password">Contraseña</label>
+        <input type="password" name="password" id="password" placeholder="********">
+
+        <button type="submit">Login</button>
     </form>
 </div>
-
-
-
-
-
 
 
 <?php require 'app/views/templates/layout/footer.phtml' ?>

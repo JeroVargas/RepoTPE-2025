@@ -3,25 +3,30 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
---
+-- Tiempo de generación: 20-10-2025 a las 03:02:42
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Base de datos: `pisostpe`
 --
-
--- Primero, eliminamos las tablas antiguas si existen para empezar de cero.
-DROP TABLE IF EXISTS `pisos`;
-DROP TABLE IF EXISTS `categorias`;
 
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `categorias`
 --
+
 CREATE TABLE `categorias` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL
@@ -30,6 +35,7 @@ CREATE TABLE `categorias` (
 --
 -- Volcado de datos para la tabla `categorias`
 --
+
 INSERT INTO `categorias` (`id`, `nombre`) VALUES
 (1, 'Mármoles'),
 (2, 'Travertinos'),
@@ -40,6 +46,7 @@ INSERT INTO `categorias` (`id`, `nombre`) VALUES
 --
 -- Estructura de tabla para la tabla `pisos`
 --
+
 CREATE TABLE `pisos` (
   `id` int(11) NOT NULL,
   `id_categoria` int(11) NOT NULL,
@@ -47,6 +54,28 @@ CREATE TABLE `pisos` (
   `origen` varchar(100) NOT NULL,
   `acabados_comunes` varchar(255) NOT NULL,
   `uso_recomendado` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `pisos`
+--
+
+INSERT INTO `pisos` (`id`, `id_categoria`, `tipo_variante`, `origen`, `acabados_comunes`, `uso_recomendado`) VALUES
+(1, 1, 'Marmol Veteado', 'Italia - Grecia', 'Pulido, Apomazado', 'Interiores de lujo, Encimera'),
+(3, 2, 'Travertino para Piso ', 'Italia - Turquia', 'Taponado (Pulido/Apomazado)', 'Interiores y Exteriores Generales'),
+(4, 3, 'Baldosa de Terracota', 'Artesanal', 'Natural, Sellado, Encerado', 'Rústicos, Cocinas, Patio');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `level` varchar(255) NOT NULL DEFAULT 'usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -67,6 +96,13 @@ ALTER TABLE `pisos`
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -80,7 +116,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de la tabla `pisos`
 --
 ALTER TABLE `pisos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Restricciones para tablas volcadas
@@ -92,3 +128,7 @@ ALTER TABLE `pisos`
 ALTER TABLE `pisos`
   ADD CONSTRAINT `pisos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`);
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

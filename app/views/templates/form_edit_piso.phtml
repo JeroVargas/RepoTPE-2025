@@ -1,0 +1,42 @@
+<?php require 'app/views/templates/layout/header.phtml' ?>
+
+<main class="container mt-5">
+    <h1 class="mb-4">Editando Piso: <?= htmlspecialchars($piso->tipo_variante) ?></h1>
+
+    <form action="update-piso" method="POST">
+        <!-- Campo oculto para enviar el ID -->
+        <input type="hidden" name="id" value="<?= $piso->id ?>">
+
+        <div class="mb-3">
+            <label for="tipo_variante" class="form-label">Tipo / Variante</label>
+            <input type="text" class="form-control" name="tipo_variante" id="tipo_variante" value="<?= htmlspecialchars($piso->tipo_variante) ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="origen" class="form-label">Origen</label>
+            <input type="text" class="form-control" name="origen" id="origen" value="<?= htmlspecialchars($piso->origen) ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="acabados_comunes" class="form-label">Acabados Comunes</label>
+            <input type="text" class="form-control" name="acabados_comunes" id="acabados_comunes" value="<?= htmlspecialchars($piso->acabados_comunes) ?>">
+        </div>
+        <div class="mb-3">
+            <label for="uso_recomendado" class="form-label">Uso Recomendado</label>
+            <input type="text" class="form-control" name="uso_recomendado" id="uso_recomendado" value="<?= htmlspecialchars($piso->uso_recomendado) ?>">
+        </div>
+        <div class="mb-3">
+            <label for="id_categoria" class="form-label">Categoría</label>
+            <select class="form-select" name="id_categoria" id="id_categoria" required>
+                <?php foreach ($categorias as $categoria): ?>
+                    <option value="<?= $categoria->id ?>" <?= ($categoria->id == $piso->id_categoria) ? 'selected' : '' ?>>
+                        <?= htmlspecialchars($categoria->nombre) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Actualizar Piso</button>
+        <a href="panel_de_control" class="btn btn-secondary">Cancelar</a>
+    </form>
+</main>
+
+<?php require 'app/views/templates/layout/footer.phtml' ?>
