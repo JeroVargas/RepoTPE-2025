@@ -33,6 +33,13 @@ Esta tabla almacena detalles específicos de las baldosas.
 - **lugar_colocacion**: Lugar de colocación recomendado para la baldosa.
 - **tamanio**: Tamaño de la baldosa.
 
+
+## Admin Login
+
+user: admin@todopisos.com
+
+password: admin
+
 ## Imágenes del Proyecto
 
 - [Ver Imagen](349c28fd-a95e-450c-8a3d-085ac4d34c7b.jfif)
