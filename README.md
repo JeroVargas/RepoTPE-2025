@@ -15,23 +15,32 @@ La página web se centrará en la venta de pisos, con una amplia gama de opcione
 
 La base de datos del proyecto se llama `pisostpe` y consta de las siguientes tablas:
 
+### Tabla `categorias`
+
+Esta tabla almacena las categorías de los pisos.
+
+- **id**: Identificador único para cada categoría (Clave primaria).
+- **nombre**: Nombre de la categoría (ej. Mármoles, Travertinos, Baldosas).
+
 ### Tabla `pisos`
 
-Esta tabla almacena los tipos de pisos disponibles.
+Esta tabla almacena los detalles de los pisos disponibles.
 
 - **id**: Identificador único para cada tipo de piso (Clave primaria).
-- **baldosa**: Información sobre pisos de baldosa.
-- **marmol**: Información sobre pisos de mármol.
-- **travertino**: Información sobre pisos de travertino.
+- **id_categoria**: Referencia a la categoría a la que pertenece el piso (Clave foránea a `categorias.id`).
+- **tipo_variante**: El tipo o variante del piso.
+- **origen**: El país o región de origen del material.
+- **acabados_comunes**: Los acabados más comunes para ese tipo de piso.
+- **uso_recomendado**: El uso recomendado para el piso.
 
-### Tabla `baldosas`
+### Tabla `usuarios`
 
-Esta tabla almacena detalles específicos de las baldosas.
+Esta tabla almacena la información de los usuarios registrados.
 
-- **id**: Identificador único para cada baldosa (Clave primaria).
-- **id_origen**: Referencia al tipo de piso al que pertenece la baldosa (Clave foránea a `pisos.id`).
-- **lugar_colocacion**: Lugar de colocación recomendado para la baldosa.
-- **tamanio**: Tamaño de la baldosa.
+- **id**: Identificador único para cada usuario (Clave primaria).
+- **email**: Correo electrónico del usuario (Único).
+- **password**: Contraseña hasheada del usuario.
+- **level**: Nivel de permisos del usuario (ej. usuario, admin).
 
 
 ## Admin Login
