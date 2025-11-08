@@ -26,7 +26,7 @@
                         <?php foreach ($pisos as $piso): ?>
                             <tr>
                                 <td><?= htmlspecialchars($piso->categoria) ?></td>
-                                <td><?= htmlspecialchars($piso->tipo_variante) ?></td>
+                                <td><a href="detalle_piso/<?= $piso->id ?>"><?= htmlspecialchars($piso->tipo_variante) ?></a></td>
                                 <td><?= htmlspecialchars($piso->origen) ?></td>
                                 <td><?= htmlspecialchars($piso->acabados_comunes) ?></td>
                                 <td><?= htmlspecialchars($piso->uso_recomendado) ?></td>

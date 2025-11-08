@@ -24,13 +24,7 @@ class PisosModel
         return $pisos;
     }
 
-    public function getAllCategorias()
-    {
-        $query = $this->db->prepare("SELECT * FROM categorias");
-        $query->execute();
-        $categorias = $query->fetchAll(PDO::FETCH_OBJ);
-        return $categorias;
-    }
+
 
 
     //funcion para obtener cada piso individualmente por ID, con su categoria

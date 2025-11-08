@@ -4,6 +4,7 @@ require_once './app/middlewares/session.auth.middlewares.php';
 require_once './app/middlewares/verify.auth.middlewares.php';
 require_once './app/middlewares/verify.admin.middlewares.php';
 require_once './app/controllers/pisos.controller.php';
+require_once './app/controllers/categorias.controller.php';
 require_once './app/controllers/auth.controller.php';
 
 define('BASE_URL', '//' . $_SERVER['SERVER_NAME'] . ':' . $_SERVER['SERVER_PORT'] . dirname($_SERVER['PHP_SELF']) . '/');
@@ -29,6 +30,32 @@ switch ($params[0]) {
     case 'lista_pisos':
         $controller = new PisosController($res);
         $controller->showPisos();
+        break;
+
+    case 'categorias':
+        $controller = new CategoriasController($res);
+        $controller->showCategorias();
+        break;
+
+    case 'detalle_categoria':
+        if (isset($params[1])) {
+            $id = $params[1];
+            $controller = new CategoriasController($res);
+            $controller->showCategoriaDetail($id);
+        } else {
+            // TODO: show an error
+        }
+        break;
+
+    case 'detalle_piso':
+        if (isset($params[1])) {
+            $id = $params[1];
+            $controller = new PisosController($res);
+            $controller->showPisoDetail($id);
+        } else {
+            $controller = new PisosController($res);
+            $controller->showError("No se especificó un ID de piso.");
+        }
         break;
 
     case 'login':

@@ -1,0 +1,32 @@
+<?php require_once './app/views/templates/layout/header.phtml'; ?>
+
+<div class="container">
+    <h1>Detalle del Piso</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Tipo de Variante</th>
+                <td><?= $piso->tipo_variante ?></td>
+            </tr>
+            <tr>
+                <th>Origen</th>
+                <td><?= $piso->origen ?></td>
+            </tr>
+            <tr>
+                <th>Acabados Comunes</th>
+                <td><?= $piso->acabados_comunes ?></td>
+            </tr>
+            <tr>
+                <th>Uso Recomendado</th>
+                <td><?= $piso->uso_recomendado ?></td>
+            </tr>
+            <tr>
+                <th>Categoría</th>
+                <td><?= $piso->categoria ?></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<?php require_once './app/views/templates/layout/footer.phtml'; ?>

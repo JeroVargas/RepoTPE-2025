@@ -1,0 +1,23 @@
+N°22: Vargas Mirabelli, Jerónimo David - Bellocchio, Giuliano Nicolas
+Tienen funciones de categorias en el modelo de pisos.
+
+Listado Categoría -3:
+No implementado.
+
+Detalle Categoría -3:
+No implementado.
+
+Detalle Item -3:
+No implementado.
+
+Agregar  Item -1.5:
+Chequear antes de utilizar el $_POST. -0.5
+No cheuquean que exista el tipo de categoria. -1
+
+Actualizar Item -2.5:
+Chequear antes de utilizar el $_POST. -0.5
+No chequean que exista el piso. -1
+No chequean que exista el tipo de categoria. -1
+
+Borrar Item -1:
+No chequean que exista el piso. -1

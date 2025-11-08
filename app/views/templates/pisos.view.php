@@ -19,6 +19,11 @@ class PisosView
         require 'app/views/templates/lista_pisos.phtml';
     }
 
+    public function showPisoDetail($piso)
+    {
+        require 'app/views/templates/detalle_piso.phtml';
+    }
+
     public function showLogin()
     {
         require 'app/views/templates/form_login.phtml';

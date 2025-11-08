@@ -1,0 +1,14 @@
+<?php require_once './app/views/templates/layout/header.phtml'; ?>
+
+<div class="container">
+    <h1><?= $categoria->nombre ?></h1>
+
+    <h2>Pisos en esta categoría:</h2>
+    <ul>
+        <?php foreach ($categoria->pisos as $piso) : ?>
+            <li><?= $piso->tipo_variante ?></li>
+        <?php endforeach; ?>
+    </ul>
+</div>
+
+<?php require_once './app/views/templates/layout/footer.phtml'; ?>
