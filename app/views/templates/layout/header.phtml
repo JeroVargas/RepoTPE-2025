@@ -36,6 +36,10 @@
                 }
                 if (isset($_SESSION['USER_ID'])) : 
                 ?>
+                    <?php if ($_SESSION['USER_LEVEL'] === 'admin') : ?>
+                        <li><a href="panel_de_control">Admin Pisos</a></li>
+                        <li><a href="admin/categorias">Admin Categorías</a></li>
+                    <?php endif; ?>
                     <li><span class="user-email"><?= htmlspecialchars($_SESSION['USER_EMAIL']) ?></span></li>
                     <li><a href="logout">Logout</a></li>
                 <?php else : ?>

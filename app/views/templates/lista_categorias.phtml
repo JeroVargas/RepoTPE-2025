@@ -1,22 +1,30 @@
 <?php require_once './app/views/templates/layout/header.phtml'; ?>
 
-<div class="container">
-    <h1>Lista de Categorías</h1>
+<main class="container py-5">
+    <section class="product-section">
+        <h2 class="mb-3">Categorías de Pisos</h2>
+        <p class="section-description">Selecciona una categoría para explorar los tipos de pisos disponibles.</p>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php foreach ($categorias as $categoria) : ?>
-                <tr>
-                    <td><a href="detalle_categoria/<?= $categoria->id ?>"><?= $categoria->nombre ?></a></td>
-                </tr>
-            <?php endforeach; ?>
-        </tbody>
-    </table>
-</div>
+        <?php if (empty($categorias)): ?>
+            <div class="alert alert-info text-center" role="alert">
+                No hay categorías cargadas en el sistema.
+            </div>
+        <?php else: ?>
+            <div class="card-grid">
+                <?php foreach ($categorias as $categoria): ?>
+                    <a href="categoria/<?= $categoria->id ?>" class="item-card">
+                        <div class="item-card-content">
+                            <h3><?= htmlspecialchars($categoria->nombre) ?></h3>
+                            <p>Explorar todos los pisos de la categoría <?= htmlspecialchars(strtolower($categoria->nombre)) ?>.</p>
+                        </div>
+                        <div class="item-card-footer">
+                            <span>Ver categoría →</span>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+    </section>
+</main>
 
 <?php require_once './app/views/templates/layout/footer.phtml'; ?>

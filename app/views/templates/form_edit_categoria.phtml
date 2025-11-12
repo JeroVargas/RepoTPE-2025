@@ -1,0 +1,23 @@
+<?php require_once './app/views/templates/layout/header.phtml'; ?>
+
+<div class="container">
+    <h1 class="my-4">Editar Categoría</h1>
+
+    <div class="card">
+        <div class="card-header">
+            Editando: <?= htmlspecialchars($categoria->nombre) ?>
+        </div>
+        <div class="card-body">
+            <form action="admin/categorias/update/<?= $categoria->id ?>" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nuevo Nombre</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" value="<?= htmlspecialchars($categoria->nombre) ?>" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Actualizar Categoría</button>
+                <a href="admin/categorias" class="btn btn-secondary mt-3">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<?php require_once './app/views/templates/layout/footer.phtml'; ?>

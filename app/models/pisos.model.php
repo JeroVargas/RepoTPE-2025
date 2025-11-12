@@ -41,6 +41,14 @@ class PisosModel
         return $piso;
     }
 
+    public function getByCategoria($id_categoria)
+    {
+        $query = $this->db->prepare('SELECT p.*, c.nombre AS categoria FROM pisos p JOIN categorias c ON p.id_categoria = c.id WHERE p.id_categoria = ?');
+        $query->execute([$id_categoria]);
+        $pisos = $query->fetchAll(PDO::FETCH_OBJ);
+        return $pisos;
+    }
+
     public function insertPiso($id_categoria, $tipo_variante, $origen, $acabados_comunes, $uso_recomendado)
     {
         $query = $this->db->prepare('INSERT INTO pisos(id_categoria, tipo_variante, origen, acabados_comunes, uso_recomendado) VALUES(?,?,?,?,?) ');

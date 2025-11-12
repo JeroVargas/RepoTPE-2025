@@ -18,6 +18,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding-top: 75px; /* <-- Añadido para el header fijo */
 }
 
 /* 🧭 Navbar elegante */
@@ -152,7 +153,11 @@ section, p {
 .product-section {
     padding: 80px 50px;
     text-align: center;
-    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo semi-transparente para mejor contraste */
+    border-radius: 12px; /* Esquinas redondeadas */
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); /* Sombra sutil */
+    margin: 20px auto; /* Centrar y dar espacio */
+    max-width: 1200px; /* Limitar ancho para mejor lectura */
 }
 .product-section h2 {
     font-size: 2.5rem;
@@ -383,4 +388,119 @@ footer span {
     .login-form h2 {
         font-size: 1.6rem;
     }
+}
+
+/* --- ✨ Nuevo Estilo de Tarjetas Minimalistas --- */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 40px 0;
+}
+
+.item-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-top: 4px solid #d4a373;
+}
+
+.item-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.item-card-content {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.item-card h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.item-card p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 8px;
+}
+
+.item-card p strong {
+    color: #444;
+}
+
+.item-card-footer {
+    padding: 15px 25px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #f0f0f0;
+    text-align: right;
+}
+
+.item-card-footer a {
+    color: #d4a373;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* --- 🛠️ Estilos Refinados para Panel de Admin --- */
+.admin-panel .card {
+    border: 1px solid #e9ecef;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+}
+
+.admin-panel .card-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border-bottom: 1px solid #e9ecef;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.admin-panel .table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+}
+
+.admin-panel .table td {
+    vertical-align: middle;
+}
+
+.admin-panel .btn-warning {
+    background-color: #e9c46a;
+    border-color: #e9c46a;
+    color: #fff;
+}
+.admin-panel .btn-warning:hover {
+    background-color: #d8b55a;
+    border-color: #d8b55a;
+}
+
+.admin-panel .btn-danger {
+    background-color: #e76f51;
+    border-color: #e76f51;
+}
+.admin-panel .btn-danger:hover {
+    background-color: #d66041;
+    border-color: #d66041;
+}
+
+.admin-panel .btn-primary {
+    background-color: #2a9d8f;
+    border-color: #2a9d8f;
+}
+.admin-panel .btn-primary:hover {
+    background-color: #248a7e;
+    border-color: #248a7e;
 }

@@ -1,0 +1,59 @@
+<?php require_once './app/views/templates/layout/header.phtml'; ?>
+
+<div class="container admin-panel my-5">
+    <h1 class="my-4">Panel de Administración de Categorías</h1>
+
+    <!-- Formulario para añadir nueva categoría -->
+    <div class="card mb-4">
+        <div class="card-header">
+            Añadir Nueva Categoría
+        </div>
+        <div class="card-body">
+            <form action="admin/categorias/add" method="POST">
+                <div class="form-group">
+                    <label for="nombre">Nombre de la Categoría</label>
+                    <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Añadir Categoría</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de categorías existentes -->
+    <div class="card">
+        <div class="card-header">
+            Categorías Existentes
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($categorias)): ?>
+                        <tr>
+                            <td colspan="3" class="text-center">No hay categorías cargadas.</td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($categorias as $categoria): ?>
+                            <tr>
+                                <td><?= htmlspecialchars($categoria->id) ?></td>
+                                <td><?= htmlspecialchars($categoria->nombre) ?></td>
+                                <td>
+                                    <a href="admin/categorias/edit/<?= $categoria->id ?>" class="btn btn-warning btn-sm">Editar</a>
+                                    <a href="admin/categorias/delete/<?= $categoria->id ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">Eliminar</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<?php require_once './app/views/templates/layout/footer.phtml'; ?>

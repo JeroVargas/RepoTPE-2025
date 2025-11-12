@@ -41,4 +41,23 @@ class CategoriasModel
 
         return $categoria;
     }
+
+    public function insertCategoria($nombre)
+    {
+        $query = $this->db->prepare("INSERT INTO categorias (nombre) VALUES (?)");
+        $query->execute([$nombre]);
+        return $this->db->lastInsertId();
+    }
+
+    public function updateCategoria($id, $nombre)
+    {
+        $query = $this->db->prepare("UPDATE categorias SET nombre = ? WHERE id = ?");
+        $query->execute([$nombre, $id]);
+    }
+
+    public function deleteCategoria($id)
+    {
+        $query = $this->db->prepare("DELETE FROM categorias WHERE id = ?");
+        $query->execute([$id]);
+    }
 }

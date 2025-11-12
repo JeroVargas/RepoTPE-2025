@@ -37,11 +37,12 @@ switch ($params[0]) {
         $controller->showCategorias();
         break;
 
-    case 'detalle_categoria':
+    // RUTA MODIFICADA: /categoria/5 (reemplaza a detalle_categoria)
+    case 'categoria':
         if (isset($params[1])) {
             $id = $params[1];
             $controller = new CategoriasController($res);
-            $controller->showCategoriaDetail($id);
+            $controller->showPisosPorCategoria($id);
         } else {
             // TODO: show an error
         }
@@ -82,6 +83,39 @@ switch ($params[0]) {
         verifyAdminMiddleware($res);
         $controller = new PisosController($res);
         $controller->showPanelDeControl();
+        break;
+
+    // --- RUTAS DE ADMIN PARA CATEGORIAS ---
+    case 'admin':
+        if (isset($params[1]) && $params[1] == 'categorias') {
+            verifyAdminMiddleware($res);
+            $controller = new CategoriasController($res);
+
+            if (isset($params[2])) {
+                switch ($params[2]) {
+                    case 'add':
+                        $controller->createCategoria();
+                        break;
+                    case 'delete':
+                        if (isset($params[3])) {
+                            $controller->deleteCategoria($params[3]);
+                        }
+                        break;
+                    case 'edit':
+                        if (isset($params[3])) {
+                            $controller->showEditForm($params[3]);
+                        }
+                        break;
+                    case 'update':
+                        if (isset($params[3])) {
+                            $controller->updateCategoria($params[3]);
+                        }
+                        break;
+                }
+            } else {
+                $controller->showAdminPanel();
+            }
+        }
         break;
 
     case 'show-add-piso-form':

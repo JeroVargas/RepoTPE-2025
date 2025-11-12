@@ -14,8 +14,27 @@ class CategoriasView
         require_once './app/views/templates/lista_categorias.phtml';
     }
 
-    public function showCategoriaDetail($categoria)
+    public function showPisos($pisos, $categoria_nombre)
     {
-        require_once './app/views/templates/detalle_categoria.phtml';
+        // Reutilizamos la vista de lista de pisos
+        require_once './app/views/templates/lista_pisos.phtml';
+    }
+
+    public function showAdminPanel($categorias)
+    {
+        // Esta será la nueva vista para el admin
+        require_once './app/views/templates/admin_categorias.phtml';
+    }
+
+    public function showEditForm($categoria)
+    {
+        // Esta será la nueva vista para editar
+        require_once './app/views/templates/form_edit_categoria.phtml';
+    }
+
+    public function showError($error)
+    {
+        // Reutilizamos la vista de error genérica
+        require_once './app/views/templates/error.phtml';
     }
 }

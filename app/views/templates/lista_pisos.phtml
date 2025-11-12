@@ -1,41 +1,33 @@
 <?php require 'app/views/templates/layout/header.phtml' ?>
-<main>
+<main class="container py-5">
     <section id="catalogo" class="product-section">
-        <h2>Catálogo de Pisos Disponibles</h2>
+        <h2 class="mb-3">
+            <?php echo isset($categoria_nombre) ? 'Pisos de ' . htmlspecialchars($categoria_nombre) : 'Catálogo de Pisos'; ?>
+        </h2>
         <p class="section-description">Explora nuestra selección premium de materiales, incluyendo variedades
             específicas de mármol y travertino.</p>
 
-        <div class="table-container">
-            <table class="products-table">
-                <thead>
-                    <tr>
-                        <th>Material</th>
-                        <th>Tipo / Variante</th>
-                        <th>Origen</th>
-                        <th>Acabados Comunes</th>
-                        <th>Uso Recomendado</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (empty($pisos)): ?>
-
-                        <tr>
-                            <td colspan="5" style="text-align: center;">No hay pisos cargados en el sistema.</td>
-                        </tr>
-                    <?php else: ?>
-                        <?php foreach ($pisos as $piso): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($piso->categoria) ?></td>
-                                <td><a href="detalle_piso/<?= $piso->id ?>"><?= htmlspecialchars($piso->tipo_variante) ?></a></td>
-                                <td><?= htmlspecialchars($piso->origen) ?></td>
-                                <td><?= htmlspecialchars($piso->acabados_comunes) ?></td>
-                                <td><?= htmlspecialchars($piso->uso_recomendado) ?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+        <?php if (empty($pisos)): ?>
+            <div class="alert alert-info text-center" role="alert">
+                No hay pisos cargados en esta categoría.
+            </div>
+        <?php else: ?>
+            <div class="card-grid">
+                <?php foreach ($pisos as $piso): ?>
+                    <div class="item-card">
+                        <div class="item-card-content">
+                            <h3><?= htmlspecialchars($piso->tipo_variante) ?></h3>
+                            <p><strong>Categoría:</strong> <?= htmlspecialchars($piso->categoria) ?></p>
+                            <p><strong>Origen:</strong> <?= htmlspecialchars($piso->origen) ?></p>
+                            <p><strong>Acabados:</strong> <?= htmlspecialchars($piso->acabados_comunes) ?></p>
+                        </div>
+                        <div class="item-card-footer">
+                            <a href="detalle_piso/<?= $piso->id ?>">Ver más detalles →</a>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
     </section>
 </main>
 
